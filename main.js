@@ -77,8 +77,7 @@ function searchWeather() {
         })
 }
 
-// URI = `https://api.openweathermap.org/data/2.5/weather?q=${weatherLocationInput.value}&units=metric&APPID=${API_KEY}`;
-weatherLocationBtn.addEventListener("click", searchWeather(), false);
+weatherLocationBtn.addEventListener("click", searchWeather, false)
 document.body.addEventListener("keydown", function (e) {
     if (e.key === "Enter") {
         searchWeather();
