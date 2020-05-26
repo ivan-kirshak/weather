@@ -51,7 +51,19 @@ button {
   align-items: center;
   justify-content: center;
 }
-.temperature {
+.main > div {
+  display: flex;
+  flex-direction: row;
+}
+.toggle-btn {
+  font-size: inherit;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+  cursor: pointer;
+}
+.temperature, .toggle-btn {
   font-size: 3rem;
   font-weight: 700;
 }

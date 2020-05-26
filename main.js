@@ -15,7 +15,30 @@ function showLocation(position) {
     showWeather(URI);
 }
 
+// code below made by example: https://dev.to/drewclem/building-a-weather-app-with-vanilla-javascript-19p9
+function fToC (fahrenheit) {
+    return Math.floor((fahrenheit - 32) * 5 / 9);
+}
 
+function cToF (celsius) {
+    return Math.floor(celsius * 9 / 5 + 32);
+}
+
+function toggleTemp(event) {
+    let tempCypher = event.target.previousElementSibling.innerHTML;
+
+    if(event.target.innerHTML === '°C') {
+        event.target.previousElementSibling.innerHTML = 
+        cToF(tempCypher);
+        event.target.innerHTML = '°F';
+    } else if (event.target.innerHTML === '°F') {
+        event.target.previousElementSibling.innerHTML = 
+        fToC(tempCypher);
+        event.target.innerHTML = '°C';
+    }
+}
+
+// end of code by example
 
 function showWeather() {
     fetch(URI)
@@ -29,7 +52,10 @@ function showWeather() {
                 <br>
                 <img src="http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png">
                 <br>
-                <p class="temperature">${Number(data.main.temp).toFixed()} °C</p>
+                <div>
+                <p class="temperature">${Number(data.main.temp).toFixed()}</p>
+                <p class="toggle-btn" onclick="toggleTemp(event)">°C</p>
+                </div>
                 <p class="main-weather-description">${data.weather[0].main}</p>
                 <p class="feels-like">Feels like: ${Number(data.main.feels_like).toFixed()} °C</p>
                 <p class="humidity">Humidity ${data.main.humidity} %</p>
@@ -60,7 +86,10 @@ function searchWeather() {
                 <br>
                 <img src="http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png">
                 <br>
-                <p class="temperature">${Number(data.main.temp).toFixed()} °C</p>
+                <div>
+                <p class="temperature">${Number(data.main.temp).toFixed()}</p>
+                <p class="toggle-btn" onclick="toggleTemp(event)">°C</p>
+                </div>
                 <p class="main-weather-description">${data.weather[0].main}</p>
                 <p class="feels-like">Feels like: ${Number(data.main.feels_like).toFixed()} °C</p>
                 <p class="humidity">Humidity ${data.main.humidity} %</p>
